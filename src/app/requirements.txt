@@ -1,6 +1,6 @@
 tensorflow==2.12.0
+flask
 librosa
-pillow
 matplotlib
 numpy
-flask
+gunicorn

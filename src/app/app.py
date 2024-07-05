@@ -12,8 +12,8 @@ from PIL import Image
 
 app = Flask(__name__)
 
-# import os
-# os.environ["NUMBA_DISABLE_INTEL_SVML"] = "1"
+import os
+os.environ["NUMBA_DISABLE_INTEL_SVML"] = "1"
 
 # Load model and class indices
 MODEL_PATH = 'model-23juni-full-vfull2.h5'
