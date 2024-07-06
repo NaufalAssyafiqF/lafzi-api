@@ -46,6 +46,11 @@ def prepare_image(image_path, target_size):
     image = np.expand_dims(image, axis=0)
     return image
 
+
+@app.route('/', methods=['GET'])
+def index():
+    return jsonify({'message': 'Anda berhasil terhubung dengan API'})
+
 @app.route('/predict', methods=['POST'])
 def predict():
     if 'audio' not in request.files:
