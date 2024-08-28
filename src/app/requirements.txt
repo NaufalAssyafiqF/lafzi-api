@@ -1,6 +1,7 @@
-tensorflow==2.12.0
-flask
-librosa
-matplotlib
-numpy
-gunicorn
+flask==3.0.3
+gunicorn==22.0.0
+numpy==1.23.5
+librosa==0.8.1
+tensorflow==2.15.0
+werkzeug==3.0.3
+scikit-learn==1.5.1
