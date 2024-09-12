@@ -4,3 +4,4 @@ librosa==0.8.1
 tensorflow==2.17.0
 werkzeug==3.0.3
 scikit-learn==1.5.1
+gunicorn
