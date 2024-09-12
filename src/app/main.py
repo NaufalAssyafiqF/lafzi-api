@@ -7,9 +7,9 @@ from werkzeug.utils import secure_filename
 from sklearn.preprocessing import LabelEncoder
 
 # Load model and labels
-model = tf.keras.models.load_model('model/makharijul_huruf_model_297.h5')
+model = tf.keras.models.load_model('src/app/model/model_alif_v2.h5')
 
-my_label = ['1 alif', '10 ro', '11 za', '12 sin', '13 syin', '14 shod', '15 dhod', '16 tho', '17 zho', '18 ain', '19 ghoin', '2 ba', '20 fa', '21 qof', '22 kaf', '23 lam', '24 mim', '25 nun', '26 wau', '27 haa', '28 ya', '3 ta', '4 tsa', '5 jim', '6 hha', '7 kho', '8 dal', '9 dzal']
+my_label = ['false', 'true']
 
 # Initialize Flask app
 app = Flask(__name__)
@@ -31,19 +31,19 @@ def predict():
     if 'file' not in request.files:
         return jsonify({"error": "No file part"})
     
-    index_label = request.form.get('indexLabel')
+    # index_label = request.form.get('indexLabel')
     file = request.files['file']
     
-    if not index_label:
-        return jsonify({"error": "No indexLabel part"})
+    # if not index_label:
+    #     return jsonify({"error": "No indexLabel part"})
     
     if file.filename == '':
         return jsonify({"error": "No selected file"})
     
-    try:
-        index_label_int = int(index_label)  # Convert indexLabel to integer
-    except ValueError:
-        return jsonify({"error": "Invalid indexLabel value"})
+    # try:
+    #     # index_label_int = int(index_label)  # Convert indexLabel to integer
+    # except ValueError:
+    #     return jsonify({"error": "Invalid indexLabel value"})
     
     if file.filename == '':
         return jsonify({"error": "No selected file"})
@@ -62,7 +62,7 @@ def predict():
         predicted_index = np.argmax(predictions, axis=1)[0]
         predicted_label = my_label[predicted_index]
 
-        index_akurasi = predictions.tolist()[0][index_label_int]
+        index_akurasi = predictions.tolist()[0][1]
 
         if index_akurasi > 0.7 and index_akurasi < 1.3 :
             isPredicted = True
